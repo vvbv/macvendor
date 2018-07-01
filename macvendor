@@ -16,7 +16,7 @@ if len(sys.argv) < 3:
     print( ERROR_MESSAGE )
     exit()
 
-mac_to_find = sys.argv[2:][0].upper()
+mac_to_find = sys.argv[2:][0].upper().strip()
 
 if sys.argv[1:][0] == "--update":
     UPDATE_VENDORS = True
@@ -27,8 +27,28 @@ else:
     exit()
 
 def downloadVendors():
-    print("Updating list of vendors")
-    response = urllib2.urlopen('http://standards-oui.ieee.org/oui.txt')
+    print("Updating list of vendors.")
+    url = "http://standards-oui.ieee.org/oui.txt"
+    u = urllib2.urlopen(url)
+    f = open(VENDORS_FILE, 'wb')
+    meta = u.info()
+    file_size = int(meta.getheaders("Content-Length")[0])
+    print "Downloading %s %s bytes" % ("list, size:", file_size)
+
+    file_size_dl = 0
+    block_sz = 8192
+    while True:
+        buffer = u.read(block_sz)
+        if not buffer:
+            break
+
+        file_size_dl += len(buffer)
+        f.write(buffer)
+        status = r"%10d  [%3.2f%%]" % (file_size_dl, file_size_dl * 100. / file_size)
+        status = status + chr(8)*(len(status)+1)
+        print status,
+    f.close()
+    print ("")
 
 def internet_on():
     try:
@@ -64,7 +84,7 @@ while line:
         completed_last_mac = last_mac + ":FF:FF:FF"
         manufacturer = raw[1]
 
-        if mac_to_find[0:7] == first_mac[0:7]:
+        if mac_to_find[0:8] == first_mac[0:8]:
             print( mac_to_find + ", " + manufacturer )
             break
 
