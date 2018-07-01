@@ -7,6 +7,11 @@ Find MAC Address Vendors.
 > $ ./install.sh
 
 # How to use it
+With last vendors list:
 > $ macvendor --update B0:EA:BC:00:00:00 <br>
 
-<strong>Output:</strong> B0:EA:BC:00:00:00, <strong>ASKEY COMPUTER CORP </strong>
+Wih cached vendor list;
+> $ macvendor --no-update B0:EA:BC:00:00:00 <br>
+
+<strong>Output</strong> <br>
+> B0:EA:BC:00:00:00, <strong>ASKEY COMPUTER CORP </strong>
