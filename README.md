@@ -1,4 +1,4 @@
-# macventor
+# macvendor
 Find MAC Address Vendors.
 
 # Installation
