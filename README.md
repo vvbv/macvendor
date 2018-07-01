@@ -10,7 +10,7 @@ Find MAC Address Vendors.
 With last vendors list:
 > $ macvendor --update B0:EA:BC:00:00:00 <br>
 
-Wih cached vendor list;
+With the last list of vendors downloaded:
 > $ macvendor --no-update B0:EA:BC:00:00:00 <br>
 
 <strong>Output</strong> <br>
