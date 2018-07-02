@@ -5,11 +5,11 @@ echo "Use root to install"
 echo "-------------------"
 echo "Please enter your home folder name:"
 read -p "/home/" username
-if [ ! -d "/home/"$username"/.macvendors" ]; then
+if [ ! -d "/home/$username/.macvendors" ]; then
     mkdir /home/$username/.macvendors
     return_code=$?
     if [ $return_code != "0" ]; then
-        echo "[ Error ]: /home/"$username" is an invalid location."
+        echo "[ Error ]: /home/$username is an invalid location."
         exit
     fi
 fi
