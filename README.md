@@ -4,7 +4,7 @@ Find MAC Address Vendors.
 # Installation
 > $ su <br>
 > $ chmod 777 install.sh <br>
-> $ ./install.sh
+> $ ./install.sh <br>
 > $ chown -R your_user /home/your_user/.macvendor
 
 # How to use it
