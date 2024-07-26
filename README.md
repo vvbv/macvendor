@@ -1,11 +1,11 @@
 # macvendor 
-Find MAC Address Vendors.
+Find MAC Address Vendors. (Python2)
 
 # Installation
 > $ su <br>
 > $ chmod +x install.sh <br>
 > $ ./install.sh <br>
-> $ chown -R **your_user** /home/**your_user**/.macvendor
+> $ chown -R **your_user** /home/**your_user**/.macvendors
 
 # How to use it
 With last vendors list:
