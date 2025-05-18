@@ -1,6 +1,6 @@
 # macvendor
 
-Find MAC Address Vendors. (Python 3)
+A simple Python 3 tool to identify the vendor of a MAC address using the official IEEE database. Quickly look up MAC address prefixes and retrieve vendor information from your terminal.
 
 ## Installation
 
