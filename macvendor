@@ -10,11 +10,17 @@ HOME = expanduser("~")
 ENV_FOLDER = HOME + "/.macvendors"
 VENDORS_FILE = ENV_FOLDER + "/oui.txt"
 UPDATE_VENDORS = False
+QUIET_MODE = False
 ERROR_MESSAGE = "macvendor [ --update, --no-update ] [ XX:XX:XX:XX:XX:XX ]"
 
 if len(sys.argv) < 3:
     print(ERROR_MESSAGE)
     sys.exit(1)
+
+# Check for --quiet flag
+if '--quiet' in sys.argv:
+    QUIET_MODE = True
+    sys.argv.remove('--quiet')
 
 mac_to_find = sys.argv[2:][0].upper().strip()
 
@@ -27,14 +33,16 @@ else:
     sys.exit(1)
 
 def downloadVendors():
-    print("Updating list of vendors.")
+    if not QUIET_MODE:
+        print("Updating list of vendors.")
     url = "http://standards-oui.ieee.org/oui.txt"
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     u = urllib.request.urlopen(req)
     with open(VENDORS_FILE, 'wb') as f:
         meta = u.info()
         file_size = int(meta.get("Content-Length", 0))
-        print("Downloading list, size: %s bytes" % file_size)
+        if not QUIET_MODE:
+            print("Downloading list, size: %s bytes" % file_size)
         file_size_dl = 0
         block_sz = 8192
         while True:
@@ -43,9 +51,11 @@ def downloadVendors():
                 break
             file_size_dl += len(buffer)
             f.write(buffer)
-            status = r"%10d  [%3.2f%%]" % (file_size_dl, file_size_dl * 100. / file_size if file_size else 0)
-            print(status, end='\r')
-    print("")
+            if not QUIET_MODE and file_size:
+                status = r"%10d  [%3.2f%%]" % (file_size_dl, file_size_dl * 100. / file_size)
+                print(status, end='\r')
+    if not QUIET_MODE:
+        print("")
 
 def internet_on():
     try:
