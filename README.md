@@ -34,7 +34,6 @@ B0:EA:BC:00:00:00, ASKEY COMPUTER CORP
 ## Notes
 
 - The script downloads the IEEE vendors database if needed.
-- Requires Python 2 and an internet connection to update the list.
 - The vendors file is stored at `~/.macvendors/oui.txt`.
 
 ## License
