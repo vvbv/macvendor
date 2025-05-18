@@ -1,6 +1,6 @@
 # macvendor
 
-Find MAC Address Vendors. (Python 2)
+Find MAC Address Vendors. (Python 3)
 
 ## Installation
 
