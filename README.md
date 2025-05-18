@@ -1,18 +1,42 @@
-# macvendor 
-Find MAC Address Vendors. (Python2)
+# macvendor
 
-# Installation
-> $ su <br>
-> $ chmod +x install.sh <br>
-> $ ./install.sh <br>
-> $ chown -R **your_user** /home/**your_user**/.macvendors
+Find MAC Address Vendors. (Python 2)
 
-# How to use it
-With last vendors list:
-> $ macvendor --update B0:EA:BC:00:00:00 <br>
+## Installation
 
-With the last list of vendors downloaded:
-> $ macvendor --no-update B0:EA:BC:00:00:00 <br>
+```sh
+$ su
+$ chmod +x install.sh
+$ ./install.sh
+$ chown -R <your_user> /home/<your_user>/.macvendors
+```
 
-<strong>Output</strong> <br>
-> B0:EA:BC:00:00:00, <strong>ASKEY COMPUTER CORP </strong>
+## Usage
+
+### With the latest vendors list:
+
+```sh
+$ macvendor --update B0:EA:BC:00:00:00
+```
+
+### With the last downloaded vendors list:
+
+```sh
+$ macvendor --no-update B0:EA:BC:00:00:00
+```
+
+### Output Example
+
+```
+B0:EA:BC:00:00:00, ASKEY COMPUTER CORP
+```
+
+## Notes
+
+- The script downloads the IEEE vendors database if needed.
+- Requires Python 2 and an internet connection to update the list.
+- The vendors file is stored at `~/.macvendors/oui.txt`.
+
+## License
+
+MIT License.
